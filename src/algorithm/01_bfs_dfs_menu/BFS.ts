@@ -1,25 +1,13 @@
-import list from './longJson.json'
-const list1 = [
-    { "id": 20, "parentId": 0 },
-    { "id": 21, "parentId": 0 },
-    { "id": 22, "parentId": 0 },
-    { "id": 23, "parentId": 0 },
-    { "id": 24, "parentId": 20 },
-    { "id": 25, "parentId": 20 },
-    { "id": 26, "parentId": 24 },
-    { "id": 27, "parentId": 24 },
-    { "id": 28, "parentId": 21 },
-    { "id": 29, "parentId": 21 },
-    { "id": 30, "parentId": 29 },
-    { "id": 31, "parentId": 30 },
-    { "id": 32, "parentId": 31 }
-]
-// 广度优先搜索
-const bfs = (): any[] => {
-    const heads: any[] = [{ id: 0, children: [] }];
+
+/**
+ * 广度优先搜索
+ * @param list json数据
+ */
+const bfs = (list: any[]): any[] => {
+    const heads: any[] = [{ id: 0, children: [] }];// 创建一个头指针，heads[0].children就是最终结果
     const levels: any[][] = [heads];// 按层存储，每层都是一个数组
     let lv = 0;// 层级
-    let count = 0;
+    let count = 0;// 统计复杂度
     while (list.length > 0) {
         const level = levels[lv];
         // 遍历第j层，找该层第j个元素的children
@@ -42,9 +30,9 @@ const bfs = (): any[] => {
         lv++; // 层级
     }
     console.log('bfs=',count)
+    console.log('lv=',lv)
     return levels[0][0].children;
 }
 
 
-// bfs()
 export default bfs;

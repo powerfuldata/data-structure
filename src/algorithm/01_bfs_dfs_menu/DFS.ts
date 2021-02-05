@@ -1,24 +1,15 @@
-import list from './longJson.json'
-const list1 = [
-    { "id": 20, "parentId": 0 },
-    { "id": 21, "parentId": 0 },
-    { "id": 22, "parentId": 0 },
-    { "id": 23, "parentId": 0 },
-    { "id": 24, "parentId": 20 },
-    { "id": 25, "parentId": 20 },
-    { "id": 26, "parentId": 24 },
-    { "id": 27, "parentId": 24 },
-    { "id": 28, "parentId": 21 },
-    { "id": 29, "parentId": 21 },
-    { "id": 30, "parentId": 29 },
-    { "id": 31, "parentId": 30 },
-    { "id": 32, "parentId": 31 }
-]
 
-// 深度优先搜索
-const dfs = (): any[] => {
-    const res: any[] = [];// 结果
-    let count = 0;
+/**
+ * 深度优先搜索
+ * @param list json数据
+ */
+const dfs = (list: any[]): any[] => {
+    let count = 0;// 统计复杂度
+    /**
+     * 递归方法
+     * @param p     父级菜单
+     * @param id    父级id
+     */
     const loop = (p: any,id = 0) => {
         let i = 0;
         while(i < list.length) {
@@ -34,14 +25,11 @@ const dfs = (): any[] => {
             }
         }
     }
-    // 遍历第一层,进行递归
-    for(let i = 0; i < list.length; i ++){
-        loop(list[i],list[i].id);
-        list[i].parentId === 0 && res.push(list[i])
-    }
-    // console.log(JSON.stringify(res))
+    const header = {id: 0, children: []};// 创建头指针，header.children是结果
+    loop(header, header.id);
+
+    console.log(JSON.stringify(header.children))
     console.log('dfs=',count)
-    return res
+    return header.children
 }
-// dfs()
 export default dfs;
