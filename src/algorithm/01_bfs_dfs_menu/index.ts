@@ -1,6 +1,6 @@
 import bfs from './BFS'
 import dfs from './DFS'
-import list from './test.json';
+import list from './testJson1.json';
 
 
 /**

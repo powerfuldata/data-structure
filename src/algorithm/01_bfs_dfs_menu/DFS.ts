@@ -28,7 +28,7 @@ const dfs = (list: any[]): any[] => {
     const header = {id: 0, children: []};// 创建头指针，header.children是结果
     loop(header, header.id);
 
-    console.log(JSON.stringify(header.children))
+    // console.log(JSON.stringify(header.children))
     console.log('dfs=',count)
     return header.children
 }
