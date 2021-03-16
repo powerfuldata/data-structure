@@ -26,7 +26,7 @@ export const deserialize = (nodes) => {
             }
         }
     }
-    console.log(res[0])
+    console.log(JSON.stringify(res[0]))
     return res[0]
 }
 /**
